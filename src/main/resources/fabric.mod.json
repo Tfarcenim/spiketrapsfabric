@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "spiketraps",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Spike Traps",
+  "description": "Spike traps for mob farms",
   "authors": [
     "Tfarecnim"
   ],
@@ -18,11 +18,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "tfar.example.ExampleMod"
+      "tfar.spiketraps.SpikeTraps"
+    ],
+    "client": [
+      "tfar.spiketraps.SpikeTraps"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "spiketraps.mixins.json"
   ],
 
   "depends": {
