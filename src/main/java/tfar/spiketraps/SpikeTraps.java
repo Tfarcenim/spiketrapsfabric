@@ -4,15 +4,21 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.event.client.ItemTooltipCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import tfar.extratags.api.tagtypes.EnchantmentTags;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -53,6 +59,22 @@ public class SpikeTraps implements ModInitializer, ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		MOD_BLOCKS.forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
+
+		ItemTooltipCallback.EVENT.register((itemStack, tooltipContext, list) -> {
+			ListTag enchantments = EnchantedBookItem.getEnchantmentTag(itemStack);
+			for(int i = 0; i < enchantments.size(); ++i) {
+				CompoundTag compoundTag = enchantments.getCompound(i);
+				Registry.ENCHANTMENT.getOrEmpty(Identifier.tryParse(compoundTag.getString("id"))).ifPresent((e) -> {
+					EnchantmentTags.getContainer().getEntries().forEach(
+									(identifier, enchantmentTag) -> {
+										if (enchantmentTag.contains(e)){
+											list.add(new LiteralText(identifier.toString()));
+										}
+									}
+					);
+				});
+			}
+		});
 	}
 
 	public static class Objects {

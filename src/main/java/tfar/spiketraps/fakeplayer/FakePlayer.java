@@ -23,6 +23,7 @@ package tfar.spiketraps.fakeplayer;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.container.NameableContainerProvider;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.MessageType;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -50,10 +51,11 @@ public class FakePlayer extends ServerPlayerEntity
 	@Override public OptionalInt openContainer(NameableContainerProvider nameableContainerProvider) {
 		return OptionalInt.empty(); }
 
-	@Override public boolean isInvulnerableTo(DamageSource source){ return true; }
+	@Override public boolean isInvulnerableTo(DamageSource source){ return true;}
 	@Override public boolean isAffectedBySplashPotions() {return false;}
 	@Override public boolean shouldDamagePlayer(PlayerEntity player) {return false;}
 	@Override public void onDeath(DamageSource source){}
 	@Override public void tick(){}
 	@Override public void setClientSettings(ClientSettingsC2SPacket clientSettingsC2SPacket) {}
+	@Override public boolean canHaveStatusEffect(StatusEffectInstance effect) {return false;}
 }

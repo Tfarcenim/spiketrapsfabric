@@ -9,7 +9,7 @@
       "item": "minecraft:diamond_sword"
     },
     "B": {
-      "tag": "forge:storage_blocks/diamond"
+      "item": "minecraft:diamond_block"
     }
   },
   "result": {

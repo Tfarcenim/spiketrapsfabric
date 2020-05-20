@@ -7,16 +7,17 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterials;
-
-import java.util.Set;
+import net.minecraft.tag.Tag;
+import net.minecraft.util.Identifier;
+import tfar.extratags.api.tagtypes.EnchantmentTags;
 
 public class SpikeBlockItem extends BlockItem {
   public SpikeBlockItem(Block blockIn, Settings builder) {
     super(blockIn, builder);
   }
 
-  public static final Set<Enchantment> whitelist = Sets.newHashSet(
-          Enchantments.SHARPNESS, Enchantments.LOOTING);
+  public static final Tag<Enchantment> whitelist = new EnchantmentTags.CachingTag(
+          new Identifier(SpikeTraps.MODID,"whitelist"));
 
   @Override
   public int getEnchantability() {

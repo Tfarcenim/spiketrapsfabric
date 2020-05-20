@@ -9,7 +9,7 @@
       "item": "minecraft:iron_sword"
     },
     "B": {
-      "tag": "forge:storage_blocks/iron"
+      "item": "minecraft:iron_block"
     }
   },
   "result": {

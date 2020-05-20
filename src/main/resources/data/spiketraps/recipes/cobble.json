@@ -9,7 +9,7 @@
       "item": "minecraft:stone_sword"
     },
     "B": {
-      "tag": "forge:stone"
+      "item": "minecraft:cobblestone"
     }
   },
   "result": {

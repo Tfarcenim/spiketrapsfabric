@@ -9,7 +9,7 @@
       "item": "minecraft:golden_sword"
     },
     "B": {
-      "tag": "forge:storage_blocks/gold"
+      "item": "minecraft:gold_block"
     }
   },
   "result": {
