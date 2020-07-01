@@ -18,7 +18,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import tfar.extratags.api.tagtypes.EnchantmentTags;
+import tfar.extratags.api.ExtraTagRegistry;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -65,7 +65,7 @@ public class SpikeTraps implements ModInitializer, ClientModInitializer {
 			for(int i = 0; i < enchantments.size(); ++i) {
 				CompoundTag compoundTag = enchantments.getCompound(i);
 				Registry.ENCHANTMENT.getOrEmpty(Identifier.tryParse(compoundTag.getString("id"))).ifPresent((e) -> {
-					EnchantmentTags.getContainer().getEntries().forEach(
+					ExtraTagRegistry.ENCHANTMENT.getContainer().getEntries().forEach(
 									(identifier, enchantmentTag) -> {
 										if (enchantmentTag.contains(e)){
 											list.add(new LiteralText(identifier.toString()));

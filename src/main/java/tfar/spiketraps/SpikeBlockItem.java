@@ -9,14 +9,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
-import tfar.extratags.api.tagtypes.EnchantmentTags;
+import tfar.extratags.api.ExtraTagRegistry;
 
 public class SpikeBlockItem extends BlockItem {
   public SpikeBlockItem(Block blockIn, Settings builder) {
     super(blockIn, builder);
   }
 
-  public static final Tag<Enchantment> whitelist = new EnchantmentTags.CachingTag(
+  public static final Tag<Enchantment> whitelist = ExtraTagRegistry.enchantment(
           new Identifier(SpikeTraps.MODID,"whitelist"));
 
   @Override
